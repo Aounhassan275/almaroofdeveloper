@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     protected $fillable = [
-        'name', 'p_name','amount','star','message','image',''
+        'name', 'position','message','image'
     ];
     public function setImageAttribute($value){
-        $this->attributes['image'] = ImageHelper::saveRImage($value,'/profile/');
+        $this->attributes['image'] = ImageHelper::saveReviewImage($value,'/review/');
     }
 }

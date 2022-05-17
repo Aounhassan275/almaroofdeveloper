@@ -46,17 +46,7 @@ class ImageHelper
         $myImage->save($originalPath.$filename);
         return $path.$filename;
     }    
-    public static function saveResourceImage($imagefile,$path)
-    {
-        $originalImage=$imagefile;
-        $myImage = Image::make($originalImage);
-        $myImage->resize(1024,1024);
-        $originalPath = public_path().$path;
-        $filename = rand(0,100).time().'.'.$originalImage->getClientOriginalExtension();
-        $myImage->save($originalPath.$filename);
-        return $path.$filename;
-    }   
-    public static function saveStaffImage($imagefile,$path)
+    public static function saveReviewImage($imagefile,$path)
     {
         $originalImage=$imagefile;
         $myImage = Image::make($originalImage);
@@ -67,16 +57,6 @@ class ImageHelper
         return $path.$filename;
     }
     public static function saveTuitionImage($imagefile,$path)
-    {
-        $originalImage=$imagefile;
-        $myImage = Image::make($originalImage);
-        $myImage->resize(1024,1024);
-        $originalPath = public_path().$path;
-        $filename = rand(0,100).time().'.'.$originalImage->getClientOriginalExtension();
-        $myImage->save($originalPath.$filename);
-        return $path.$filename;
-    }
-    public static function saveNewsImage($imagefile,$path)
     {
         $originalImage=$imagefile;
         $myImage = Image::make($originalImage);

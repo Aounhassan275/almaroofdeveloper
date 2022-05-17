@@ -186,7 +186,13 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="{{route('admin.profile.index')}}" class="nav-link {{Request::is('admin/profile')?'active':''}}">
+							<a href="{{route('admin.review.index')}}" class="nav-link {{Request::is('admin/review')?'active':''}}">
+								<i class="icon-user"></i>
+								<span>Review</span>
+							</a>
+						</li>	
+						<li class="nav-item">
+							<a href="{{route('admin.review.index')}}" class="nav-link {{Request::is('admin/profile')?'active':''}}">
 								<i class="icon-user"></i>
 								<span>Profile</span>
 							</a>

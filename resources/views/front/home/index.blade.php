@@ -336,20 +336,22 @@
 						</div>
 					</div>
 					<div class="testimonial-carousel owl-carousel owl-btn-1 col-12 p-lr0">
+						@foreach(App\Models\Review::all() as $review)
 						<div class="item">
 							<div class="testimonial-bx">
 								<div class="testimonial-thumb">
-									<img src="{{asset('assets/images/testimonials/pic1.jpg')}}" alt="">
+									<img src="{{asset($review->image)}}" alt="">
 								</div>
 								<div class="testimonial-info">
-									<h5 class="name">Peter Packer</h5>
-									<p>-Art Director</p>
+									<h5 class="name">{{$review->name}}</h5>
+									<p>-{{$review->position}}</p>
 								</div>
 								<div class="testimonial-content">
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type...</p>
+									<p>{!! $review->message !!}</p>
 								</div>
 							</div>
 						</div>
+						@endforeach
 						<div class="item">
 							<div class="testimonial-bx">
 								<div class="testimonial-thumb">

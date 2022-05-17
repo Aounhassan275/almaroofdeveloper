@@ -38,6 +38,8 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.','namespace' => 'Admin',], func
     Route::resource('slider', 'SliderController');
     /******************SERVICE ROUTES****************/
     Route::resource('service', 'ServiceController');
+    /******************REVIEW ROUTES****************/
+    Route::resource('review', 'ReviewController');
 });
 });
 
@@ -53,9 +55,21 @@ Route::group(['middleware' => 'website'], function () {
 });
 
 /******************FUNCTIONALITY ROUTES****************/
-Route::get('/cd', function() {
-    Artisan::call('config:cache');
-    Artisan::call('view:clear');
-    return 'DONE';
+Route::get('/migrate/install', function() {
+  Artisan::call('config:cache');
+  Artisan::call('migrate:refresh');
+  Artisan::call('db:seed', [ '--class' => DatabaseSeeder::class]);
+  Artisan::call('view:clear');
+  return 'DONE';
+});
+Route::get('/migrate', function() {
+  Artisan::call('migrate');
+  return 'Migration done';
+});
+Route::get('/cache_clear', function() {
+  Artisan::call('config:cache');
+  Artisan::call('view:clear');
+  Artisan::call('cache:clear');
+  return 'Cache Clear DOne';
 });
 

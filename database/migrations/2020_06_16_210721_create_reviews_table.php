@@ -16,11 +16,9 @@ class CreateReviewsTable extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('p_name');
-            $table->integer('amount');
-            $table->integer('star');
-            $table->text('message');
-            $table->string('image');
+            $table->string('position')->nullable();
+            $table->text('message')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

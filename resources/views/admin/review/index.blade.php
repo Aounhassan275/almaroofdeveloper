@@ -1,7 +1,7 @@
 @extends('admin.layout.index')
 
 @section('title')
-    Add Slider
+    Add Review
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
         <!-- Basic layout-->
         <div class="card">
             <div class="card-header header-elements-inline">
-                <h5 class="card-title">Add New Slider</h5>
+                <h5 class="card-title">Add New Review</h5>
                 <div class="header-elements">
                     <div class="list-icons">
                         <a class="list-icons-item" data-action="collapse"></a>
@@ -21,24 +21,24 @@
             </div>
 
             <div class="card-body">
-                <form action="{{route('admin.slider.store')}}" method="post" enctype="multipart/form-data" >
+                <form action="{{route('admin.review.store')}}" method="post" enctype="multipart/form-data" >
                     @csrf
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <label>Slider Title</label>
-                            <input name="title" type="text" class="form-control" placeholder="Enter Slider Title" required>
+                            <label>Review Name</label>
+                            <input name="name" type="text" class="form-control" placeholder="Enter Review Name" required>
                         </div>
                           <div class="form-group col-md-12">
-                            <label>Slider Image</label>
+                            <label>Review Image</label>
                             <input name="image" type="file" class="form-control"  required>
                         </div>
                           <div class="form-group col-md-12">
-                            <label>Slider Description</label>
-                            <textarea name="description" class="form-control" cols="30" rows="10"></textarea>
+                            <label>Review Message</label>
+                            <textarea name="message" class="form-control" cols="30" rows="10"></textarea>
                         </div>
                         <div class="form-group col-md-12">
-                            <label>Display Order</label>
-                            <input type="number" name="display_order" placeholder="Enter Display Order" class="form-control" required>
+                            <label>Review Position</label>
+                            <input type="text" name="position" placeholder="Enter Position" class="form-control" required>
                         </div> 
                     </div>
                     <div class="text-right">
@@ -59,29 +59,29 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Slider Image</th>
-                <th>Slider Name</th>
-                <th>Slider Description</th>
-                <th>Display Order</th>
+                <th>Review Image</th>
+                <th>Review Name</th>
+                <th>Review Message</th>
+                <th>Review Position</th>
                 <th>Action</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (App\Models\Slider::orderBy('display_order')->get()->all() as $key => $slider)
+            @foreach (App\Models\Review::all() as $key => $review)
             <tr>
                 <td>{{$key+1}}</td>
-                <td><img src="{{asset($slider->image)}}" style="width:100px;height:auto;"></td>
-                <td>{{$slider->title}}</td>
-                <td>{{$slider->description}}</td>
-                <td>{{$slider->display_order}}</td>
+                <td><img src="{{asset($review->image)}}" style="width:100px;height:auto;"></td>
+                <td>{{$review->name}}</td>
+                <td>{{$review->message}}</td>
+                <td>{{$review->position}}</td>
                 
                 <td>
-                    <button data-toggle="modal" data-target="#edit_modal" title="{{$slider->title}}" description="{{$slider->description}}"
-                    display_order="{{$slider->display_order}}" id="{{$slider->id}}" class="edit-btn btn btn-primary">Edit</button>
+                    <button data-toggle="modal" data-target="#edit_modal" name="{{$review->name}}" message="{{$review->message}}"
+                        position="{{$review->position}}" id="{{$review->id}}" class="edit-btn btn btn-primary">Edit</button>
                 </td>
                 <td>
-                    <form action="{{route('admin.slider.destroy',$slider->id)}}" method="POST">
+                    <form action="{{route('admin.review.destroy',$review->id)}}" method="POST">
                         @method('DELETE')
                         @csrf
                     <button class="btn btn-danger">Delete</button>
@@ -100,25 +100,25 @@
             @csrf
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mt-0" id="myModalLabel">Update Slider</h5>
+                    <h5 class="modal-title mt-0" id="myModalLabel">Update Review</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="name">Slider Name</label>
-                        <input class="form-control" type="text" id="title" name="title" placeholder="Enter Title" required>
+                        <label for="name">Review Name</label>
+                        <input class="form-control" type="text" id="name" name="name" placeholder="Enter Name" required>
                     </div>
                      <div class="form-group">
-                        <label for="name">Slider Image</label>
+                        <label for="name">Review Image</label>
                         <input class="form-control" type="file" name="image" >
                     </div>
                      <div class="form-group">
-                        <label for="name">Slider Description</label>
-                        <input class="form-control" type="text" id="description" name="description"  required>
+                        <label for="name">Review Message</label>
+                        <input class="form-control" type="text" id="message" name="message"  required>
                     </div>
                     <div class="form-group">
-                        <label>Display Order</label>
-                        <input type="number" name="display_order" id="display_order" placeholder="Enter Display Order" class="form-control" required>
+                        <label>Review Position</label>
+                        <input type="text" name="position" id="position" placeholder="Enter Position" class="form-control" required>
                     </div> 
                 </div>
                 <div class="modal-footer">
@@ -136,14 +136,14 @@
     $(document).ready(function(){
         $('.edit-btn').click(function(){
             let id = $(this).attr('id');
-            let display_order = $(this).attr('display_order');
-            let description = $(this).attr('description');
-            let title = $(this).attr('title');
-            $('#title').val(title);
-            $('#description').val(description);
-            $('#display_order').val(display_order);
+            let position = $(this).attr('position');
+            let message = $(this).attr('message');
+            let name = $(this).attr('name');
+            $('#name').val(name);
+            $('#message').val(message);
+            $('#position').val(position);
             $('#id').val(id);
-            $('#updateForm').attr('action','{{route('admin.slider.update','')}}' +'/'+id);
+            $('#updateForm').attr('action','{{route('admin.review.update','')}}' +'/'+id);
         });
     });
 </script>

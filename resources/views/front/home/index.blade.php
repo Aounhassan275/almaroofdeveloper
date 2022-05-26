@@ -85,7 +85,7 @@
                 <div class="container clearfix">
 					<!-- Header Logo ==== -->
 					<div class="menu-logo">
-						<a href="{{url('/')}}"><img src="{{asset('logo-2.png')}}" alt=""></a>
+						<a href="{{url('/')}}"><img src="{{asset('web_logo.png')}}" alt=""></a>
 					</div>
 					<!-- Mobile Nav Button ==== -->
                     <button class="navbar-toggler collapsed menuicon justify-content-end" type="button" data-toggle="collapse" data-target="#menuDropdown" aria-controls="menuDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,7 +95,7 @@
 					</button>
                     <div class="menu-links navbar-collapse collapse justify-content-start" id="menuDropdown">
 						<div class="menu-logo">
-							<a href="{{url('/')}}"><img src="{{asset('logo-1.png')}}" alt=""></a>
+							<a href="{{url('/')}}"><img src="{{asset('web_logo.png')}}" alt=""></a>
 						</div>
                         <ul class="nav navbar-nav">	
 							<li class="{{Request::is('/')?'active':''}}"><a href="{{url('/')}}">Home </a>
@@ -368,7 +368,7 @@
 				<div class="container">
 					<div class="d-flex align-items-stretch">
 						<div class="pt-logo mr-auto">
-							<a href="{{url('/')}}"><img src="{{asset('logo-2.png')}}" alt=""/></a>
+							<a href="{{url('/')}}"><img src="{{asset('web_logo.png')}}" style="width:40%!important;" alt=""/></a>
 						</div>
 						<div class="pt-social-link">
 							<ul class="list-inline m-a0">

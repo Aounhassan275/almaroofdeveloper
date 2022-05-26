@@ -131,7 +131,7 @@
           <div class="container">
             <div class="d-flex align-items-stretch">
               <div class="pt-logo mr-auto">
-                <a href="{{url('/')}}"><img src="{{asset('logo-2.png')}}" alt=""/></a>
+                <a href="{{url('/')}}"><img src="{{asset('web_logo.png')}}" style="width:40%!important;" alt=""/></a>
               </div>
               <div class="pt-social-link">
                 <ul class="list-inline m-a0">

@@ -41,7 +41,7 @@ $information = App\Models\Information::find(1);
       <div class="row">
         <div class="col-md-12 heading-bx left">
           <h2 class="title-head text-uppercase">About <span>Us</span></h2>
-          <p>{!! $information->adescription !!}</p>
+              {!! $information->about !!}
         </div>
       </div>
     </div>

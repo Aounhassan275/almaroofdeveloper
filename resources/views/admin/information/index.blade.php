@@ -3,6 +3,13 @@
 @section('title')
    Website Information
 @endsection
+@section('styles')
+<script src="{{asset('admin/global_assets/js/plugins/editors/summernote/summernote.min.js')}}"></script>
+<script src="{{asset('admin/global_assets/js/demo_pages/editor_summernote.js')}}"></script>
+<script src="{{asset('admin/global_assets/js/demo_pages/form_tags_input.js')}}"></script>
+<script src="{{asset('admin/global_assets/js/plugins/forms/tags/tokenfield.min.js')}}"></script>
+@endsection
+
 
 @section('content')
 
@@ -31,7 +38,7 @@
                             </div>  
                             <div class="form-group">
                                 <label>Enter About Us Information</label>
-                                <textarea name="about" id="" cols="30" rows="2" class="form-control">{{$information->about}}</textarea>                                        
+                                <textarea name="about" id="" cols="30" rows="2" class="form-control summernote">{{$information->about}}</textarea>                                        
                             </div>       
                             <div class="form-group">
                                 <label>Enter Address</label>
@@ -39,7 +46,7 @@
                             </div> 
                             <div class="form-group">
                                 <label>Enter Privacy Policy Content</label>
-                                <textarea name="pdescription" id="" cols="30" rows="2" class="form-control">{{$information->pdescription}}</textarea>                                        
+                                <textarea name="pdescription" id="" cols="30" rows="2" class="form-control summernote">{{$information->pdescription}}</textarea>                                        
                             </div>     
                             <div class="form-group">
                                 <label>Enter Facebook Link</label>
